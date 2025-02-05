@@ -3,11 +3,11 @@ import { useSpring, animated } from "@react-spring/web";
 
 const Counter = () => {
   const [count, setCount] = useState(() => {
-    return Number(localStorage.getItem("count")) || 0; // Retrieve count from localStorage
+    return Number(localStorage.getItem("count")) || 0;
   });
 
   useEffect(() => {
-    localStorage.setItem("count", count); // Save count to localStorage
+    localStorage.setItem("count", count); 
   }, [count]);
 
   const getBackgroundColor = (count) => {
@@ -22,21 +22,20 @@ const Counter = () => {
   useEffect(() => {
     setBgColor(getBackgroundColor(count));
   }, [count]);
-
-  // Animate background color smoothly
+  
   const springProps = useSpring({
     to: { backgroundColor: bgColor },
-    config: { duration: 800 }, // Smooth transition duration
+    config: { duration: 800 }, 
     onChange: ({ value }) => {
-      document.body.style.backgroundColor = value.backgroundColor; // Apply animation to body
-      localStorage.setItem("bgColor", value.backgroundColor); // Save bg color to localStorage
+      document.body.style.backgroundColor = value.backgroundColor; 
+      localStorage.setItem("bgColor", value.backgroundColor); 
     },
   });
 
   useEffect(() => {
     const savedBgColor = localStorage.getItem("bgColor");
     if (savedBgColor) {
-      document.body.style.backgroundColor = savedBgColor; // Restore background color
+      document.body.style.backgroundColor = savedBgColor; 
     }
   }, []);
 
@@ -62,7 +61,7 @@ const Counter = () => {
         <button
           onClick={() => {
             setCount(0);
-            localStorage.setItem("bgColor", getBackgroundColor(0)); // Reset bg color
+            localStorage.setItem("bgColor", getBackgroundColor(0)); 
           }}
           className="px-4 py-2 bg-yellow-500 text-white rounded-full shadow-md hover:bg-yellow-600 transition duration-200"
         >
