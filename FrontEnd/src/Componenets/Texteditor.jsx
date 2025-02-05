@@ -18,7 +18,7 @@ const Textedit = () => {
     };
 
     const loadedData = getSaved();
-    console.log(loadedData);  // Log to check the data being loaded
+    console.log(loadedData);
 
     setSaved(loadedData);
 
